@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+
+        <PackageId>KafkaLibrary</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Damir</Authors>
+        <Company>KFU</Company>
+        <Description>Support Kafka messaging</Description>
+        <PackageTags>kafka;messaging;producer;consumer;dependency-injection;microservices</PackageTags>
+
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/VKR-KFU/KafkaLibrary</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/VKR-KFU/KafkaLibrary</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Confluent.Kafka" Version="2.12.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    </ItemGroup>
+
+</Project>

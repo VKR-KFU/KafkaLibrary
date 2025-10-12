@@ -6,9 +6,9 @@
         <Nullable>enable</Nullable>
 
 
-        <PackageId>KafkaLibrary</PackageId>
+        <PackageId>KafkaLibrary.salfetka666</PackageId>
         <Version>1.0.0</Version>
-        <Authors>Damir</Authors>
+        <Authors>salfetka666</Authors>
         <Company>KFU</Company>
         <Description>Support Kafka messaging</Description>
         <PackageTags>kafka;messaging;producer;consumer;dependency-injection;microservices</PackageTags>
@@ -30,6 +30,10 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
       <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>

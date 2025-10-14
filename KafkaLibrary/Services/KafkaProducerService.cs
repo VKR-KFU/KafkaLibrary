@@ -19,6 +19,15 @@ public class KafkaProducerService<TKey, TValue> : IKafkaProducerService<TKey, TV
         _kafkaSettings = kafkaSettings.Value;
         _logger = logger;
 
+        if (string.IsNullOrEmpty(_kafkaSettings.Topic))
+            throw new ArgumentNullException(nameof(_kafkaSettings.Topic));
+        
+        if (string.IsNullOrEmpty(_kafkaSettings.GroupId))
+            throw new ArgumentNullException(nameof(_kafkaSettings.GroupId));
+        
+        if (string.IsNullOrEmpty(_kafkaSettings.BootstrapServers))
+            throw new ArgumentNullException(nameof(_kafkaSettings.BootstrapServers));
+        
         var producerConfig = new ProducerConfig
         {
             BootstrapServers = _kafkaSettings.BootstrapServers,

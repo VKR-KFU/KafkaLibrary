@@ -7,7 +7,7 @@
 
 
         <PackageId>KafkaLibrary.salfetka666</PackageId>
-        <Version>1.0.0</Version>
+        <Version>4.0.0</Version>
         <Authors>salfetka666</Authors>
         <Company>KFU</Company>
         <Description>Support Kafka messaging</Description>

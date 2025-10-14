@@ -21,9 +21,13 @@ public static class DI
     /// <returns></returns>
     public static IServiceCollection AddKafka(this IServiceCollection services, IConfiguration config)
     {
-        var kafkaSettings = new KafkaSettings();
-        config.GetSection("Kafka").Bind(kafkaSettings);
-        services.AddSingleton(kafkaSettings);
+        services
+            .AddOptions<KafkaSettings>()
+            .Bind(config.GetSection("Kafka"))
+            .Validate(s => !string.IsNullOrWhiteSpace(s.BootstrapServers), "Kafka:BootstrapServers required")
+            .Validate(s => !string.IsNullOrWhiteSpace(s.Topic),            "Kafka:Topic required")
+            .Validate(s => !string.IsNullOrWhiteSpace(s.GroupId),          "Kafka:GroupId required")
+            .ValidateOnStart();
 
         services.AddScoped(typeof(IKafkaProducerService<,>), typeof(KafkaProducerService<,>));
         services.AddScoped(typeof(IKafkaConsumerService<,>), typeof(KafkaConsumerService<,>));

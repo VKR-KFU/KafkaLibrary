@@ -35,7 +35,8 @@ public class KafkaConsumerService<TKey, TValue> : IKafkaConsumerService<TKey, TV
             GroupId = _kafkaSettings.GroupId,
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false,
-            EnableAutoOffsetStore = false
+            EnableAutoOffsetStore = false,
+            AllowAutoCreateTopics = true
         };
 
         _consumer = new ConsumerBuilder<TKey, TValue>(consumerConfig)

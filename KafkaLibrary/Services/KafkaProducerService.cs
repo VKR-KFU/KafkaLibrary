@@ -33,7 +33,8 @@ public class KafkaProducerService<TKey, TValue> : IKafkaProducerService<TKey, TV
             BootstrapServers = _kafkaSettings.BootstrapServers,
             ClientId = Environment.MachineName,
             Acks = Acks.All,
-            MessageSendMaxRetries = 3
+            MessageSendMaxRetries = 3,
+            AllowAutoCreateTopics = true,
         };
 
         _producer = new ProducerBuilder<TKey, TValue>(producerConfig)

@@ -34,7 +34,7 @@ public class KafkaProducerService<TKey, TValue> : IKafkaProducerService<TKey, TV
             ClientId = Environment.MachineName,
             Acks = Acks.All,
             MessageSendMaxRetries = 3,
-            AllowAutoCreateTopics = true,
+            MessageTimeoutMs = 15000,
         };
 
         _producer = new ProducerBuilder<TKey, TValue>(producerConfig)

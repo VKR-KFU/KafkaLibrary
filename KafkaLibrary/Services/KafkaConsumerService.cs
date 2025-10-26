@@ -12,6 +12,7 @@ public class KafkaConsumerService<TKey, TValue> : IKafkaConsumerService<TKey, TV
     private readonly ILogger<KafkaConsumerService<TKey, TValue>> _logger;
     private bool _disposed = false;
     private string? _currentTopic = null;
+    private ConsumeResult<TKey, TValue>? _lastConsumeResult;
 
     public KafkaConsumerService(
         IOptions<KafkaSettings> kafkaSettings,
@@ -109,6 +110,7 @@ public class KafkaConsumerService<TKey, TValue> : IKafkaConsumerService<TKey, TV
         try
         {
             var consumeResult = _consumer.Consume(cancellationToken);
+            _lastConsumeResult = consumeResult;
 
             if (consumeResult.Message.Value != null)
             {
@@ -139,8 +141,9 @@ public class KafkaConsumerService<TKey, TValue> : IKafkaConsumerService<TKey, TV
 
         try
         {
-            _consumer.Commit();
+            _consumer.Commit(_lastConsumeResult);
             _logger.LogDebug("Committed Kafka offsets");
+            _lastConsumeResult = null;
         }
         catch (KafkaException ex)
         {

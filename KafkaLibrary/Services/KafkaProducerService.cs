@@ -48,7 +48,8 @@ public class KafkaProducerService<TKey, TValue> : IKafkaProducerService<TKey, TV
 
     public async Task<bool> ProduceAsync(TKey key, TValue value, string? topic = null)
     {
-        if (_disposed) throw new ObjectDisposedException(nameof(KafkaProducerService<TKey, TValue>));
+        if (_disposed) 
+            throw new ObjectDisposedException(nameof(KafkaProducerService<TKey, TValue>));
 
         var targetTopic = topic ?? _kafkaSettings.Topic;
 

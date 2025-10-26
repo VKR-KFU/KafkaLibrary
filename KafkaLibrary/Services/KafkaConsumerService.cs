@@ -141,6 +141,8 @@ public class KafkaConsumerService<TKey, TValue> : IKafkaConsumerService<TKey, TV
 
         try
         {
+            _consumer.StoreOffset(_lastConsumeResult);
+            
             _consumer.Commit(_lastConsumeResult);
             _logger.LogDebug("Committed Kafka offsets");
             _lastConsumeResult = null;
